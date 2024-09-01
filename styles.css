@@ -50,3 +50,28 @@ section {
     background: -webkit-linear-gradient(43deg, #ffdde2, #ffcbd3) !important;
 }
 
+/* Edit Countdown Timer Background */
+.flipdown.flipdown__theme-dark .rotor,
+.flipdown.flipdown__theme-dark .rotor-top,
+.flipdown.flipdown__theme-dark .rotor-leaf-front {
+    background-color: #eea2ad;
+}
+
+.flipdown.flipdown__theme-dark .rotor-bottom,
+.flipdown.flipdown__theme-dark .rotor-leaf-rear {
+    background-color: #eea2ad;
+}
+
+.flipdown.flipdown__theme-dark .rotor:after {
+    border-top: #4c1019;
+}
+
+.flipdown.flipdown__theme-dark .rotor-group:nth-child(n+2):nth-child(-n+3):before,
+.flipdown.flipdown__theme-dark .rotor-group:nth-child(n+2):nth-child(-n+3):after{
+    background-color: #eea2ad;
+}
+
+.flipdown.flipdown__theme-dark .rotor-group-heading:before,
+#countdown-custom-header {
+    color: #a5273a;
+}
