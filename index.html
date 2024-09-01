@@ -64,6 +64,7 @@
                 <p class="text-center text-md-start lh-1" style="font-size: 45px; color:white;">18th Birthday Celebration</p>
             </div>
             <div class="col-12 col-md-6 px-3 d-flex flex-column justify-content-center">
+                <!-- Image must have a square aspect ratio or it will be stretched -->
                 <img class="mx-auto mx-md-0" src="./assets/main.png" alt="Main Image" style="max-width:350px; max-height:350px">
             </div>
         </div>
@@ -74,8 +75,11 @@
             <div class="flipdown mx-auto" id="flipdown"></div>
         </div>
     </section>
-    <section class="px-4 text-center py-4" id="otherInfo">
-        <div class="row gx-5 mx-auto" style="max-width: 700px;">
+    <section class="px-4 text-center position-relative" id="otherInfo">
+        <div class="d-md-none position-absolute bottom-0 end-0 z-999">
+            <img src="assets/main2.png" alt="" style="height: 375px; width: auto;">
+        </div>
+        <div class="row gx-5 mx-auto py-4 pb-5" style="max-width: 700px;">
             <div class="col-12 col-md-6 my-2 my-md-0">
                 <div class="row bg-rose rounded h-100">
                     <div class="col-12 col-md-4 m-auto p-3">
@@ -103,7 +107,7 @@
             </div>
         </div>
     </section>
-    <section id="outfit-to-wear" class="bg-rose mt-5 py-5">
+    <section id="outfit-to-wear" class="bg-rose py-5">
         <h1 class="text-center ff-niconne">Please wear:</h1>
         <div class="mx-3">
             <div class="row gx-5 mx-auto my-5" style="max-width: 700px;">

@@ -38,6 +38,10 @@ section {
     text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
 }
 
+.z-999 {
+    z-index: -999;
+}
+
 .count-down {
     max-width: 550px;
     min-height: 250px;
@@ -47,7 +51,7 @@ section {
 
 .bg-rose {
     color: #a5273a;
-    background: -webkit-linear-gradient(43deg, #ffdde2, #ffcbd3) !important;
+    background: -webkit-linear-gradient(43deg, #ffdde2b3, #ffcbd3b3) !important;
 }
 
 /* Edit Countdown Timer Background */
