@@ -102,11 +102,11 @@ $(function () {
 
     // Resize when dom is ready
     $(document).ready(function(){
-      $bg.css({ height: $bg.parent().height() - 20 });
+      $bg.css({ height: $bg.parent().height() - 25 });
     });
 
     // event listener to adjust height when window is adjusted
     $(window).resize(function(){
-        $bg.css({ height: $bg.parent().height() - 20 });
+        $bg.css({ height: $bg.parent().height() - 25 });
     });
   });
