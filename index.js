@@ -15,6 +15,44 @@ $(document).ready(function(){
         $('#countdown-custom-header').html("We're currently celebrating!")
     });
 
+    function setBackground(){
+        // Add background
+        const h1 = $('#countdownTimer').height();
+        const h2 = $('#otherInfo').height();
+
+        const img_container_left = $('<div></div>')
+            .addClass('position-absolute top-0 start-0')
+            .css({ 'z-index': -1099 });
+        
+        $('<img></img>')
+            .attr({ src: 'assets/bg_left.png', id: "bg-left" })
+            .css({ height: h1+h2 })
+            .appendTo(img_container_left);
+
+        const img_container_right = $('<div></div>')
+            .addClass('position-absolute top-0 end-0')
+            .css({ 'z-index': -1199 });
+
+        $('<img></img>')
+            .attr({ src: 'assets/bg_right.png', id: "bg-right"})
+            .css({ height: h1+h2 })
+            .appendTo(img_container_right);
+
+        $('#countdownTimer').append([
+            img_container_left,
+            img_container_right
+        ]);
+    };
+
+    setBackground();
+
+    $(window).resize(function(){
+        setTimeout(function(){
+            const h1 = $('#countdownTimer').height();
+            const h2 = $('#otherInfo').height();
+            $('#bg-left, #bg-right').css({ height: h1+h2});
+        }, 150);
+    });
 
 
     // Random Easter Egg
@@ -25,6 +63,7 @@ $(document).ready(function(){
     for (let i = 97, a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''); i <= 122; i++){
         keyCodes[i] = a[i-97];
     }
+    
 
     $(document).keypress(function(e){
         a2V5Y29sbGVjdGVk.push(e.keyCode);
