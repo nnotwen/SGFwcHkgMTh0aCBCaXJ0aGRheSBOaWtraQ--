@@ -58,12 +58,11 @@ $(document).ready(function(){
     // Confetti
     const jsConfetti = new JSConfetti();
     $('canvas').css({ 'z-index': 1100 });
-    // Create an array for images to be used on carousel
-    const images = [];
-    for (i = 1; i <= 9; i++) images.push(`assets/for_rose_000${i}.jpg`);
-    // Select rose to hold the carousel images
-    const selectedId = ['rose_left', 'rose_center', 'rose_right'][Math.floor(Math.random() * 3)];    
 
+    // Select rose to hold the carousel images
+    const selectedId = ['rose_left', 'rose_center', 'rose_right'][Math.floor(Math.random() * 3)];  
+    
+    // When clicking the roses
     $('#rose_left, #rose_right, #rose_center').click(function(){
         const id = $(this).attr('id');
         const colors = {
@@ -83,30 +82,13 @@ $(document).ready(function(){
         // Remove padding to fully visualize image
         $('#pickARose > div > div > .modal-body').addClass('p-0');
 
-        // Use image depending on the rose that was picked
-        const useImages = selectedId === id ? images : ['assets/card_01.png', 'assets/card_02.png'];
-        
-        // Append buttons
-        $('#imageCarousel > .carousel-indicators').append(useImages.map((_, i) => (
-                $('<div></div>').addClass(i == 0 ? 'active' : '').attr({
-                    type: 'button',
-                    'data-bs-target': '#imageCarousel',
-                    'data-bs-slide-to': i,
-                    'aria-label': `Slide ${i+1}`,
-                })
-        )));
-
-        // Append images
-        $('#imageCarousel > .carousel-inner').prepend(useImages.map((x,i) => (
-            $('<div></div>')
-                .addClass(`carousel-item ${i == 0 ? 'active' : ''}`)
-                .append(
-                    $('<img></img>').addClass('d-block w-100').attr({
-                        src: x,
-                        alt: `Image_000${i+1}`
-                    })
-                )
-        )));
+        if (selectedId === id){
+            $('#childhoodCarousel').show();
+            $('#cardCarousel').hide();
+        } else {
+            $('#childhoodCarousel').hide();
+            $('#cardCarousel').show();
+        };
 
         $('#roses_container').fadeOut(200, 'swing', function(){
             $('#pickARose > div > div > div > h5').html("Yay")
@@ -118,8 +100,6 @@ $(document).ready(function(){
     // When modal is closed
     $('#pickARose').on('hidden.bs.modal', function(){
         if ($('#roses_container').css('display') === 'none'){
-            // Remove the carousel content
-            $('#imageCarousel > .carousel-indicators > [type="button"], #imageCarousel > .carousel-inner > div').remove();
             // Show the rose and hide the images
             $('#roses_container, #card_container').toggle();
             // Add back the text
