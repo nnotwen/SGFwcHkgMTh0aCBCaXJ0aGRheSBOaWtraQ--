@@ -54,6 +54,15 @@ section {
     background: -webkit-linear-gradient(43deg, #ffdde2b3, #ffcbd3b3) !important;
 }
 
+.hover-scale {
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.hover-scale:hover{
+    transform: scale(1.05);
+}
+
 /* Edit Countdown Timer Background */
 .flipdown.flipdown__theme-dark .rotor,
 .flipdown.flipdown__theme-dark .rotor-top,
