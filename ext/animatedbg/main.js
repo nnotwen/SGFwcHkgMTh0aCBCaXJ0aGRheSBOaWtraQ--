@@ -77,12 +77,14 @@ $(function () {
     ];
   
     // Add initial css stylings
-    $bg.css({
-      position: "absolute",
-      "z-index": -10_000,
-      background: "-webkit-linear-gradient(43deg, #eea2ad, #B76E79)",
-      width: "100%",
-      height: $bg.parent().height(),
+    $(document).ready(function(){
+      $bg.css({
+        position: "absolute",
+        "z-index": -10_000,
+        background: "-webkit-linear-gradient(43deg, #eea2ad, #B76E79)",
+        width: "100%",
+        height: $bg.parent().height(),
+      });
     });
   
     $icn.css({
