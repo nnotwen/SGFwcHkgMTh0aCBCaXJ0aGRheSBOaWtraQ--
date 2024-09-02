@@ -21,8 +21,8 @@ $(document).ready(function(){
         const h2 = $('#otherInfo').height();
 
         const img_container_left = $('<div></div>')
-            .addClass('position-absolute top-0 start-0')
-            .css({ 'z-index': -1099 });
+            .addClass('position-absolute top-0 start-0 overflow-hidden')
+            .css({ 'z-index': -1099, 'max-width': '100vw' });
         
         $('<img></img>')
             .attr({ src: 'assets/bg_left.png', id: "bg-left" })
