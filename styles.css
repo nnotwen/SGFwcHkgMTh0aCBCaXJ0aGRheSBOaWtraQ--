@@ -49,9 +49,21 @@ section {
     padding: 20px;
 }
 
+.text-rose {
+    color: #a5273a;
+}
+
 .bg-rose {
     color: #a5273a;
     background: -webkit-linear-gradient(43deg, #ffdde2b3, #ffcbd3b3) !important;
+}
+
+.bg-rose-full {
+    background: -webkit-linear-gradient(43deg, #ffdde2, #ffcbd3) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 .hover-scale {
@@ -62,6 +74,34 @@ section {
 .hover-scale:hover{
     transform: scale(1.05);
 }
+
+.helper-icon {
+    width: 80px;
+    height: 130px;
+    bottom: 25px;
+    right: 25px;
+    transition: all .2s ease;
+    color: #a5273a;
+    cursor: pointer;
+}
+
+.anim-jelly {
+    transition: all .2s ease;
+    animation: jelly 1s ease infinite;
+}
+
+@keyframes jelly {
+    25% {
+        transform: scale(0.9, 1.1);
+    }
+    50% {
+        transform: scale(1.1, 0.9);
+    }
+    75% {
+        transform: scale(0.95, 1.05);
+    }
+}
+
 
 /* Edit Countdown Timer Background */
 .flipdown.flipdown__theme-dark .rotor,

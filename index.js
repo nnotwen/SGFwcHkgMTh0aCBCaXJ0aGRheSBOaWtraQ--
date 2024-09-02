@@ -55,6 +55,81 @@ $(document).ready(function(){
     });
 
 
+    // Confetti
+    const jsConfetti = new JSConfetti();
+    $('canvas').css({ 'z-index': 1100 });
+    // Create an array for images to be used on carousel
+    const images = [];
+    for (i = 1; i <= 9; i++) images.push(`assets/for_rose_000${i}.jpg`);
+    // Select rose to hold the carousel images
+    const selectedId = ['rose_left', 'rose_center', 'rose_right'][Math.floor(Math.random() * 3)];    
+
+    $('#rose_left, #rose_right, #rose_center').click(function(){
+        const id = $(this).attr('id');
+        const colors = {
+            rose_left:   ['#e24b4b', '#cc3636', '#ad2727', '#991d1d', '#871212'],
+            rose_center: ['#4cc9f0', '#4895ef', '#4361ee', '#2b35af', '#12086F'],
+            rose_right:  ['#fffb04', '#fee505', '#ffc905', '#ffb806', '#ffa506'],
+        };
+
+        for (i = 0; i < 2; i++){
+            setTimeout(function(){
+                jsConfetti.addConfetti({
+                    confettiColors: colors[id],
+                });
+            }, i*250)
+        };
+
+        // Remove padding to fully visualize image
+        $('#pickARose > div > div > .modal-body').addClass('p-0');
+
+        // Use image depending on the rose that was picked
+        const useImages = selectedId === id ? images : ['assets/card_01.png', 'assets/card_02.png'];
+        
+        // Append buttons
+        $('#imageCarousel > .carousel-indicators').append(useImages.map((_, i) => (
+                $('<div></div>').addClass(i == 0 ? 'active' : '').attr({
+                    type: 'button',
+                    'data-bs-target': '#imageCarousel',
+                    'data-bs-slide-to': i,
+                    'aria-label': `Slide ${i+1}`,
+                })
+        )));
+
+        // Append images
+        $('#imageCarousel > .carousel-inner').prepend(useImages.map((x,i) => (
+            $('<div></div>')
+                .addClass(`carousel-item ${i == 0 ? 'active' : ''}`)
+                .append(
+                    $('<img></img>').addClass('d-block w-100').attr({
+                        src: x,
+                        alt: `Image_000${i+1}`
+                    })
+                )
+        )));
+
+        $('#roses_container').fadeOut(200, 'swing', function(){
+            $('#pickARose > div > div > div > h5').html("Yay")
+            $("#pickARose > div > div > .modal-footer").html('o(*￣▽￣*)ブ');
+            $('#card_container').fadeIn(200);
+        });
+    });
+
+    // When modal is closed
+    $('#pickARose').on('hidden.bs.modal', function(){
+        if ($('#roses_container').css('display') === 'none'){
+            // Remove the carousel content
+            $('#imageCarousel > .carousel-indicators > [type="button"], #imageCarousel > .carousel-inner > div').remove();
+            // Show the rose and hide the images
+            $('#roses_container, #card_container').toggle();
+            // Add back the text
+            $('#pickARose > div > div > div > h5').html("Pick me a Rose");
+            $("#pickARose > div > div > .modal-footer").html('Pick for a surprise');
+            // Add back the padding
+            $('#pickARose > div > div > .modal-body').removeClass('p-0');
+        };
+    })
+
     // Random Easter Egg
     // If you found it while checking for the source code, you cheated! XD
     const a2V5Y29sbGVjdGVk = [];
