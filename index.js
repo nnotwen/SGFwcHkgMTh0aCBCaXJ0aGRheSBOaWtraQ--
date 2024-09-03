@@ -91,10 +91,30 @@ $(document).ready(function(){
         };
 
         $('#roses_container').fadeOut(200, 'swing', function(){
+            const carouselIndex = parseInt($('#cardCarousel > div > .active').attr('data-bs-slide-to'));
+            const $footer = $('<a><i class="bi bi-download me-2"></i>Download</a>')
+                .addClass('btn btn-rose')
+                .attr({
+                    role: 'button',
+                    href: `assets/card_0${carouselIndex + 1}.png`,
+                    download: `NikkiTurns18InvitationCard${carouselIndex == 0 ? 'Front' : 'Back'}.png`,
+                })
+                
             $('#pickARose > div > div > div > h5').html("Yay")
-            $("#pickARose > div > div > .modal-footer").html('o(*￣▽￣*)ブ');
+            $("#pickARose > div > div > .modal-footer").html(selectedId === id ? 'o(*￣▽￣*)ブ' : $footer[0]);
             $('#card_container').fadeIn(200);
         });
+
+        // Download controller (control which image to download depending on what is presented on the modal)
+        $('#pickARose').on('slide.bs.carousel', function(e){
+            // Ignore if it is not the invitation card
+            if (selectedId === id) return;
+
+            $("#pickARose > div > div > .modal-footer > a").attr({
+                href: `assets/card_0${e.to + 1}.png`,
+                download: `NikkiTurns18InvitationCard${e.to == 0 ? 'Front' : 'Back'}.png`,
+            });
+        })
     });
 
     // When modal is closed
