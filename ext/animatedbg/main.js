@@ -95,7 +95,7 @@ $(function () {
   
     // Add icons
     for (const prop of props) {
-      const $el = $("<li></li>").css(common).css(prop);
+      const $el = $("<li></li>").css({ ...common, ...prop });
       $icn.append($el);
     }
 
